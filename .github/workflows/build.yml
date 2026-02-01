@@ -1,9 +1,9 @@
 name: Template Build
 on:
   push:
-    branches: ['main']
+    branches: ['master']
   pull_request:
-    branches: ['main']
+    branches: ['master']
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,13 +15,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
 
       - name: Template Install dependencies
-        run: bun install
+        run: npm ci
 
       - name: Template Test Build
         # When fails, please check your build
         run: |
-          bun run build
+          npm run build
