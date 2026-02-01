@@ -49,7 +49,8 @@ export default function OnchainStoreModal({
           </div>
           <span className="text-[13px]" id="onchain-modal-description">
             <a href={GITHUB_LINK} className="ock-text-primary">
-              Fork the template and experience the end-to-end checkout flow.{' '}
+              Fork the template and experience the end-to-end checkout
+              flow.{' '}
             </a>
             Your users will see the below screen when the payment flow is
             active.

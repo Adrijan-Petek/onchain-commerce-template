@@ -29,7 +29,9 @@ const products: Product[] = PRODUCT_CATALOG.map((product) => ({
 }));
 
 export function OnchainStoreProvider({ children }: OnchainStoreProviderReact) {
-  const [quantities, setQuantities] = useState<OnchainStoreContextType['quantities']>({});
+  const [quantities, setQuantities] = useState<
+    OnchainStoreContextType['quantities']
+  >({});
   const value = useMemo(() => {
     return {
       quantities,

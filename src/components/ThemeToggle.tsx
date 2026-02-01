@@ -20,8 +20,7 @@ export default function ThemeToggle() {
 
   useEffect(() => {
     const stored = localStorage.getItem('theme');
-    const initial =
-      stored === 'dark' || stored === 'light' ? stored : 'light';
+    const initial = stored === 'dark' || stored === 'light' ? stored : 'light';
     setTheme(initial);
     applyTheme(initial);
   }, []);

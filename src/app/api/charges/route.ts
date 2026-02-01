@@ -2,18 +2,26 @@ import { COINBASE_COMMERCE_API_KEY } from 'src/config';
 import { PRODUCT_CATALOG } from 'src/data/productCatalog';
 import { COMMERCE_API_URL } from 'src/links';
 import { NextResponse } from 'next/server';
-import type { ChargeDetails, ChargeRequestItem, CreateChargeRequest } from 'src/types';
+import type {
+  ChargeDetails,
+  ChargeRequestItem,
+  CreateChargeRequest,
+} from 'src/types';
 
 const MAX_ITEM_QUANTITY = 99;
 const CURRENCY = 'USD';
 
-const productById = new Map(PRODUCT_CATALOG.map((product) => [product.id, product]));
+const productById = new Map(
+  PRODUCT_CATALOG.map((product) => [product.id, product]),
+);
 
 type ChargeBuildResult =
   | { ok: true; chargeDetails: ChargeDetails }
   | { ok: false; status: number; error: string };
 
-const buildChargeFromItems = (items: ChargeRequestItem[]): ChargeBuildResult => {
+const buildChargeFromItems = (
+  items: ChargeRequestItem[],
+): ChargeBuildResult => {
   if (!Array.isArray(items) || items.length === 0) {
     return { ok: false, status: 400, error: 'Items are required' };
   }
@@ -69,9 +77,14 @@ export async function POST(request: Request) {
   }
 
   try {
-    const body = (await request.json().catch(() => null)) as CreateChargeRequest | null;
+    const body = (await request
+      .json()
+      .catch(() => null)) as CreateChargeRequest | null;
     if (!body || typeof body !== 'object') {
-      return NextResponse.json({ error: 'Invalid request body' }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Invalid request body' },
+        { status: 400 },
+      );
     }
 
     let chargeDetails: ChargeDetails | null = null;
@@ -79,17 +92,26 @@ export async function POST(request: Request) {
     if (body.items) {
       const result = buildChargeFromItems(body.items);
       if (!result.ok) {
-        return NextResponse.json({ error: result.error }, { status: result.status });
+        return NextResponse.json(
+          { error: result.error },
+          { status: result.status },
+        );
       }
       chargeDetails = result.chargeDetails;
     } else if (body.chargeDetails) {
       const { pricing_type, local_price } = body.chargeDetails;
       if (!pricing_type || !local_price?.amount || !local_price?.currency) {
-        return NextResponse.json({ error: 'Invalid charge details' }, { status: 400 });
+        return NextResponse.json(
+          { error: 'Invalid charge details' },
+          { status: 400 },
+        );
       }
       chargeDetails = body.chargeDetails;
     } else {
-      return NextResponse.json({ error: 'Missing charge payload' }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Missing charge payload' },
+        { status: 400 },
+      );
     }
 
     const res = await fetch(`${COMMERCE_API_URL}/charges`, {
