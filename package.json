@@ -11,7 +11,7 @@
     "dev": "next dev",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "lint": "next lint",
+    "lint": "next lint --dir src",
     "start": "next start",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"
