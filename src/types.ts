@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 export type NavbarLinkReact = {
   link: string;
   label: string;
+  onClick?: () => void;
 };
 
 export type Product = {
@@ -54,4 +55,14 @@ export type ChargeDetails = {
     amount: string;
     currency: string;
   };
+};
+
+export type ChargeRequestItem = {
+  id: string;
+  quantity: number;
+};
+
+export type CreateChargeRequest = {
+  items?: ChargeRequestItem[];
+  chargeDetails?: ChargeDetails;
 };

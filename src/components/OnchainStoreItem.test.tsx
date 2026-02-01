@@ -39,7 +39,7 @@ describe('OnchainStoreItem', () => {
 
     expect(screen.getByText('Sample Product')).toBeInTheDocument();
     expect(screen.getByText('19.99 USDC')).toBeInTheDocument();
-    const imageElement = screen.getByAltText('123');
+    const imageElement = screen.getByAltText('Sample Product');
     expect(imageElement).toBeInTheDocument();
     expect(imageElement).toHaveAttribute('src', mockProduct.image);
     expect(imageElement).toHaveAttribute('width', '400');

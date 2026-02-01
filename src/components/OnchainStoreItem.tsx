@@ -3,6 +3,10 @@ import Image from 'next/image';
 import QuantityInput from './QuantityInput';
 
 export default function OnchainStoreItem({ id, name, price, image }: Product) {
+  const imageSize =
+    typeof image === 'string'
+      ? { width: 400, height: 400 }
+      : { width: image.width, height: image.height };
   return (
     <div className="store-item mx-auto flex w-full flex-col p-4 sm:mx-0 lg:p-6">
       <div className="mb-1 flex items-start justify-between">
@@ -11,7 +15,8 @@ export default function OnchainStoreItem({ id, name, price, image }: Product) {
       <div className="flex grow justify-center md:relative">
         <Image
           src={image}
-          alt="123"
+          alt={name}
+          {...imageSize}
           className="mx-auto object-contain max-sm:max-w-[300px] md:absolute md:h-full md:w-auto"
         />
       </div>

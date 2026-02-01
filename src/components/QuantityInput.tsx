@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 import type {
   Quantities,
   QuantityInputButtonReact,
@@ -28,22 +28,21 @@ function QuantityInputButton({
 export default function QuantityInput({ productId }: QuantityInputReact) {
   const { quantities, setQuantities } = useOnchainStoreContext();
 
-  const currentItemQuantity = useMemo(() => {
-    return quantities[productId] || 0;
-  }, [quantities, productId]);
+  const currentItemQuantity = quantities[productId] || 0;
 
   const handleIncrement = useCallback(() => {
     setQuantities((prev: Quantities) => {
-      return { ...prev, [productId]: currentItemQuantity + 1 };
+      const nextQuantity = (prev[productId] || 0) + 1;
+      return { ...prev, [productId]: nextQuantity };
     });
-  }, [currentItemQuantity, productId, setQuantities]);
+  }, [productId, setQuantities]);
 
   const handleDecrement = useCallback(() => {
-    const newQuantity = Math.max(0, currentItemQuantity - 1);
     setQuantities((prev: Quantities) => {
+      const newQuantity = Math.max(0, (prev[productId] || 0) - 1);
       return { ...prev, [productId]: newQuantity };
     });
-  }, [currentItemQuantity, productId, setQuantities]);
+  }, [productId, setQuantities]);
 
   return (
     <div className="flex items-center space-x-2">

@@ -1,22 +1,12 @@
 import { useCallback } from 'react';
-
-type Price = {
-  amount: string;
-  currency: string;
-};
-export type ChargeDetails = {
-  name?: string;
-  description?: string;
-  pricing_type?: string;
-  local_price?: Price;
-};
+import type { CreateChargeRequest } from 'src/types';
 
 const useCreateCharge = () => {
-  const createCharge = useCallback(async (chargeDetails: ChargeDetails) => {
+  const createCharge = useCallback(async (payload: CreateChargeRequest) => {
     try {
       const res = await fetch('/api/charges', {
         method: 'POST',
-        body: JSON.stringify(chargeDetails),
+        body: JSON.stringify(payload),
         headers: {
           'Content-Type': 'application/json',
         },

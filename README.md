@@ -46,14 +46,21 @@ Next, you'll want to replace `products` in the `OnchainStoreProvider` with your 
 
 
 ```sh
-# Install bun in case you don't have it
-bun curl -fsSL <https://bun.sh/install> | bash
-
 # Install packages
-bun i
+npm install
 
 # Run Next app
-bun run dev
+npm run dev
+```
+
+To lint and format:
+
+```sh
+# Lint
+npm run lint
+
+# Format
+npm run format
 ```
 <br />
 

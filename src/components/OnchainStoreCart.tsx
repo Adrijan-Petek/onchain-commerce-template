@@ -34,22 +34,12 @@ export default function OnchainStoreCart({
   // }, []);
 
   // const chargeHandler = useCallback(() => {
-  //   const description = Object.keys(quantities)
-  //     .map((productId) => {
-  //       return `${productId}(${quantities[productId]})`;
-  //     })
-  //     .join(',');
-  //   const chargeDetails = {
-  //     name: 'commerce template charge',
-  //     description,
-  //     pricing_type: 'fixed_price',
-  //     local_price: {
-  //       amount: totalSum.toString(),
-  //       currency: 'USD',
-  //     },
-  //   };
-  //   return createCharge(chargeDetails);
-  // }, [createCharge, quantities, totalSum]);
+  //   const items = Object.keys(quantities).map((productId) => ({
+  //     id: productId,
+  //     quantity: quantities[productId],
+  //   }));
+  //   return createCharge({ items });
+  // }, [createCharge, quantities]);
 
   // const key = useMemo(() => {
   //   if (!quantities) return '';

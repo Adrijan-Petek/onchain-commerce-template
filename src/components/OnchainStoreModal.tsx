@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 import CommerceScreenImage from '../images/commerceScreen.png';
 import type { OnchainStoreModalReact } from 'src/types';
 import { GITHUB_LINK } from 'src/links';
@@ -7,19 +8,46 @@ import { CloseSvg } from 'src/svg/CloseSvg';
 export default function OnchainStoreModal({
   closeModal,
 }: OnchainStoreModalReact) {
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    closeButtonRef.current?.focus();
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [closeModal]);
+
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="relative z-10 flex h-full xs:h-auto max-w-lg flex-col gap-2 xs:rounded-[10px] bg-[white] p-6 px-10">
+    <div
+      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+      onClick={closeModal}
+    >
+      <div
+        className="relative z-10 flex h-full xs:h-auto max-w-lg flex-col gap-2 xs:rounded-[10px] bg-[white] p-6 px-10"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="onchain-modal-title"
+        aria-describedby="onchain-modal-description"
+        onClick={(event) => event.stopPropagation()}
+        tabIndex={-1}
+      >
         <button
           type="button"
           className="absolute top-2 right-4"
           onClick={closeModal}
+          ref={closeButtonRef}
         >
           <CloseSvg />
         </button>
         <div className="flex flex-col items-start gap-2 pt-4 pb-4">
-          <div className="font-bold">Try it locally</div>
-          <span className="text-sm ">
+          <div className="font-bold" id="onchain-modal-title">
+            Try it locally
+          </div>
+          <span className="text-sm" id="onchain-modal-description">
             <a href={GITHUB_LINK} className="ock-text-primary">
               Fork the template and experience the end-to-end checkout flow.{' '}
             </a>

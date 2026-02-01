@@ -23,7 +23,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Onchain Commerce Template',
     description: 'Built with OnchainKit',
-    images: [`${NEXT_PUBLIC_URL}/vibes/vibes-19.png`],
+    images: [
+      NEXT_PUBLIC_URL
+        ? `${NEXT_PUBLIC_URL}/vibes/vibes-19.png`
+        : '/vibes/vibes-19.png',
+    ],
   },
 };
 
