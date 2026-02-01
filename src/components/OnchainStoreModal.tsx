@@ -27,7 +27,7 @@ export default function OnchainStoreModal({
       onClick={closeModal}
     >
       <div
-        className="relative z-10 flex h-full xs:h-auto max-w-lg flex-col gap-2 xs:rounded-[10px] bg-[white] p-6 px-10"
+        className="relative z-10 flex h-full xs:h-auto max-w-md flex-col gap-2 rounded-[10px] bg-white p-5 px-8 shadow-2xl"
         role="dialog"
         aria-modal="true"
         aria-labelledby="onchain-modal-title"
@@ -44,10 +44,10 @@ export default function OnchainStoreModal({
           <CloseSvg />
         </button>
         <div className="flex flex-col items-start gap-2 pt-4 pb-4">
-          <div className="font-bold" id="onchain-modal-title">
+          <div className="text-sm font-bold" id="onchain-modal-title">
             Try it locally
           </div>
-          <span className="text-sm" id="onchain-modal-description">
+          <span className="text-[13px]" id="onchain-modal-description">
             <a href={GITHUB_LINK} className="ock-text-primary">
               Fork the template and experience the end-to-end checkout flow.{' '}
             </a>
@@ -58,10 +58,10 @@ export default function OnchainStoreModal({
             <Image
               src={CommerceScreenImage}
               alt="123"
-              className="mx-auto h-[400px] w-auto rounded-[10px]"
+              className="mx-auto h-[320px] w-auto rounded-[10px]"
             />
           </div>
-          <div className="ock-text-foreground-muted text-xs ">
+          <div className="ock-text-foreground-muted text-[11px]">
             These products are not for sale. We have disabled the end-to-end
             checkout flow on production.
           </div>

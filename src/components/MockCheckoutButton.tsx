@@ -3,12 +3,12 @@ import type { MockCheckoutButtonReact } from 'src/types';
 
 export function MockCheckoutButton({ onClick }: MockCheckoutButtonReact) {
   return (
-    <div className="w-64">
+    <div className="w-56">
       <div className="default-dark flex w-full flex-col gap-2">
         <button
           type="button"
           onClick={onClick}
-          className="active:ock-bg-secondary-active ock-border-radius ock-font-family flex w-full cursor-pointer items-center justify-center bg-[#0052FF] px-4 py-3 font-semibold leading-normal hover:bg-[#0045D8]"
+          className="active:ock-bg-secondary-active ock-border-radius ock-font-family flex w-full cursor-pointer items-center justify-center rounded-md bg-gradient-to-r from-[#0B5CFF] to-[#0045D8] px-4 py-2.5 text-sm font-semibold leading-normal text-white shadow-[0_6px_16px_rgba(0,82,255,0.3)] hover:from-[#0B57F0] hover:to-[#003CC2]"
         >
           <div className="flex items-center justify-center whitespace-nowrap">
             <div className="mr-2 flex h-5 w-5 shrink-0 items-center justify-center">

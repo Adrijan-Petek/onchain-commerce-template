@@ -1,9 +1,27 @@
-# Onchain Commerce Template
-
-<img width="1200" alt="Thumbnail (1)" src="https://github.com/user-attachments/assets/e1f513ea-d1ac-4baf-908e-35b0456d5565">
+# Onchain Commerce Template (Enhanced Fork)
 
 An Onchain Commerce Template built with [OnchainKit](https://onchainkit.xyz), and ready to be deployed to Vercel.
 
+## Screenshots
+
+Light mode:
+
+![Light mode](screen-light.png)
+
+Dark mode:
+
+![Dark mode](screen-dark.png)
+
+## What's changed in this fork
+
+- NPM-first toolchain (no Bun), lockfile included.
+- ESLint + Prettier setup.
+- Tailwind v4 pipeline aligned for OnchainKit CSS.
+- UI polish: tighter spacing, refined cards, modern button styles.
+- Light/Dark theme toggle with persistent preference.
+- Server-side pricing and validation for checkout payloads.
+- Accessibility fixes for modal/menu and better image alt text.
+ 
 Play with it live on https://onchain-commerce-template.vercel.app/
 
 Have fun! ⛵️

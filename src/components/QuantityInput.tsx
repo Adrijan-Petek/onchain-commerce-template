@@ -15,7 +15,7 @@ function QuantityInputButton({
 }: QuantityInputButtonReact) {
   return (
     <button
-      className="flex h-8 w-8 items-center justify-center rounded border border-gray-200 p-0"
+      className="flex h-7 w-7 items-center justify-center rounded border border-gray-200 bg-white p-0 text-gray-700 shadow-[0_1px_0_rgba(15,23,42,0.04)] hover:border-gray-300 hover:bg-gray-50"
       onClick={onClick}
       type="button"
     >
@@ -51,7 +51,7 @@ export default function QuantityInput({ productId }: QuantityInputReact) {
         svg={<MinusSvg />}
         onClick={handleDecrement}
       />
-      <span className="w-8 text-center font-medium text-sm">
+      <span className="w-7 text-center font-medium text-xs">
         {currentItemQuantity}
       </span>
       <QuantityInputButton

@@ -8,10 +8,17 @@ export function ExternalLinkSvg() {
       xmlns="http://www.w3.org/2000/svg"
     >
       <title>ExternalLinkSvg</title>
-      <rect x="0.5" y="0.5" width="19" height="19" rx="9.5" stroke="black" />
+      <rect
+        x="0.5"
+        y="0.5"
+        width="19"
+        height="19"
+        rx="9.5"
+        stroke="currentColor"
+      />
       <path
         d="M6 14L14 6M14 6H8M14 6V12"
-        stroke="black"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"

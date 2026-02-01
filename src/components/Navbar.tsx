@@ -10,6 +10,7 @@ import { ExternalLinkSvg } from 'src/svg/ExternalLinkSvg';
 import { MenuSvg } from 'src/svg/MenuSvg';
 import OnchainKitShopSvg from 'src/svg/OnchainKitShopSvg';
 import type { NavbarLinkReact } from 'src/types';
+import ThemeToggle from './ThemeToggle';
 
 function NavbarLink({ link, label, onClick }: NavbarLinkReact) {
   return (
@@ -67,24 +68,27 @@ export default function Navbar() {
 
   return (
     <header
-      className="-mx-[50vw] fixed top-10 right-1/2 left-1/2 xs:h-11 w-screen border-gray-200 border-b bg-[white]"
+      className="-mx-[50vw] fixed top-7 right-1/2 left-1/2 z-20 h-11 w-screen border-gray-200/80 border-b bg-white/90 backdrop-blur-md"
       ref={headerRef}
     >
-      <div className="mx-auto flex h-full max-w-5xl items-center px-4 py-2 lg:px-6">
+      <div className="mx-auto flex h-full max-w-5xl items-center px-4 lg:px-6">
         <div className="flex w-full items-center justify-between">
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-3 text-gray-900 dark:text-gray-100">
             <OnchainKitShopSvg />
-            <span className="ock-bg-alternate ock-text-foreground rounded-sm px-2 py-0.5 font-regular text-xs">
+            <span className="ock-bg-alternate ock-text-foreground rounded px-2 py-0.5 font-medium text-[11px] tracking-wide">
               Template
             </span>
           </div>
           <nav className="hidden md:block">
-            <ul className="flex space-x-6">
+            <ul className="flex space-x-5">
               <NavbarLink link={TEMPLATE_LINK} label="FORK THIS TEMPLATE" />
               <NavbarLink link={ONCHAINKIT_LINK} label="ONCHAINKIT" />
               <NavbarLink link={TWITTER_LINK} label="X" />
             </ul>
           </nav>
+          <div className="hidden md:flex items-center">
+            <ThemeToggle />
+          </div>
           <button
             type="button"
             className={cn('md:hidden', pressable.default)}
@@ -120,6 +124,9 @@ export default function Navbar() {
               label="X"
               onClick={() => setIsMenuOpen(false)}
             />
+            <li className="pt-2">
+              <ThemeToggle />
+            </li>
           </ul>
         </div>
       )}
