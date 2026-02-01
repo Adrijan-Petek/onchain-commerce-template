@@ -17,11 +17,11 @@ export default function OnchainStoreSummary() {
         </h2>
         <p className="text-[12px] leading-relaxed text-gray-700">
           People and businesses lose tens of billions of dollars in transaction
-          fees and countless hours in delays to the current system that they
-          wouldn't with onchain payments.
+          fees and countless hours in delays to the current system that they do
+          not with onchain payments.
         </p>
         <p className="text-[12px] leading-relaxed text-gray-700">
-          We're updating the system so it's cheaper and faster.
+          We are updating the system so it is cheaper and faster.
         </p>
         <div className="flex flex-col pt-4">
           <p className="pt-2 pb-2 font-semibold text-[11px] tracking-wider text-gray-700">

@@ -16,14 +16,16 @@ const applyTheme = (theme: Theme) => {
 };
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window === 'undefined') return 'light';
+    const stored = localStorage.getItem('theme');
+    return stored === 'dark' || stored === 'light' ? stored : 'light';
+  });
 
   useEffect(() => {
-    const stored = localStorage.getItem('theme');
-    const initial = stored === 'dark' || stored === 'light' ? stored : 'light';
-    setTheme(initial);
-    applyTheme(initial);
-  }, []);
+    applyTheme(theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   const toggleTheme = useCallback(() => {
     setTheme((prev) => {

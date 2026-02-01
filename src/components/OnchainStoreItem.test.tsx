@@ -29,7 +29,15 @@ vi.mock('next/image', () => {
       alt: string;
       width: number;
       height: number;
-    }) => <img src={src} alt={alt} width={width} height={height} />,
+    }) => (
+      <img
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        data-testid="mock-next-image"
+      />
+    ),
   };
 });
 
